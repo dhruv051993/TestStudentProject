@@ -1,0 +1,101 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.titleContainer {
+    display: flex;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #444444;
+    color: #ffffff;
+    padding-left: 10px;
+}
+
+.idTitle {
+    flex: 1;
+    /* background:red; */
+}
+
+.nameTitle {
+    flex: 1;
+    /* background:green; */
+}
+
+.descriptionTitle {
+    flex: 1;
+    /* background:blue; */
+}
+
+.priceTitle {
+    flex: 1;
+    /* background:orange; */
+}
+
+.buttonTitle {
+    flex: 1;
+    /* background:lightblue; */
+}
+
+.infoContainer {
+    display: flex;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px solid #dddddd;
+    padding-left: 10px;
+    background: #ffffff;
+}
+
+.id {
+    flex: 1;
+    /* background:yellow; */
+}
+
+.name {
+    flex: 1;
+    /* background:maroon; */
+}
+
+.description {
+    flex: 1;
+    /* background:lightgreen; */
+}
+
+.price {
+    flex: 1;
+    /* background:darkcyan; */
+}
+
+.button {
+    flex: 1;
+    /* background:pink; */
+}
+
+.addBtn {
+    background: green;
+    border: none;
+    height: 32px;
+    margin-top: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    width: 120px;
+}
+
+.editBtn {
+    background: blue;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    height: 22px;
+    width: 60px;
+}
+
+.deleteBtn {
+    background: red;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    height: 22px;
+    width: 60px;
+}
