@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from './product.service';
 import { Product } from './product';
 import { clone } from 'lodash';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-product',
@@ -16,11 +17,26 @@ export class ProductComponent implements OnInit {
     isNewForm: boolean;
     newProduct: any = {};
     editedProduct: any = {};
+    form: FormGroup;
 
-    constructor(private productService: ProductService) { }
+    constructor(
+        private productService: ProductService,
+        private fb: FormBuilder
+    ) { }
 
     ngOnInit() {
+        this.createForm();
         this.getProducts();
+    }
+
+    createForm(): void {
+        this.form = this.fb.group({
+            fName: ['', Validators.required],
+            lName: ['', Validators.required],
+            email: ['', Validators.required],
+            phoneNo: ['', Validators.required],
+            status: [false, Validators.required],
+        });
     }
 
     getProducts() {
