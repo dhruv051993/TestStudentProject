@@ -6,6 +6,7 @@
 
 div,
 button,
-span {
+span,
+input {
     outline: none;
 }

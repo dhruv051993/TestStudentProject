@@ -2,91 +2,84 @@ import { Component, OnInit } from '@angular/core';
 import { UserInfoService } from './user-info.service';
 import { UserInformation } from './user-info';
 import { clone } from 'lodash';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-product',
+    selector: 'app-user-info',
     templateUrl: './user-info.component.html',
     styleUrls: ['./user-info.component.css']
 })
-export class ProductComponent implements OnInit {
+export class UserInfoComponent implements OnInit {
 
-    userInfo: UserInformation[] = [];
-    userForm: Boolean = false;
-    editUserForm: Boolean = false;
-    isNewForm: boolean;
-    newUser: any = {};
-    editedUser: any = {};
+    userInfo: UserInformation[];
+    displayFormType: string;
+    userForm: FormGroup;
 
-    constructor(private _userInfoService: UserInfoService) { }
+    constructor(
+        private fb: FormBuilder,
+        private _userInfoService: UserInfoService
+    ) { }
 
     ngOnInit() {
-        this.getProducts();
+        this.createForm();
+        this.getUserInfo();
     }
 
-    getProducts() {
-        this._userInfoService.getUserInfo().subscribe((userInfo) => {
-            this.userInfo = userInfo;
+    createForm(): void {
+        this.userForm = this.fb.group({
+            id: [''],
+            fName: ['', Validators.required],
+            lName: ['', Validators.required],
+            email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+            phoneNo: ['', [Validators.required, Validators.pattern('^[0-9]{10,10}$')]],
+            status: [true, Validators.required],
         });
     }
 
-    showEditProductForm(product: UserInformation) {
-        if (!product) {
-            this.userForm = false;
-            return;
+    getUserInfo() {
+        this._userInfoService.getUserInfo().subscribe(userInfo => this.userInfo = userInfo);
+    }
+
+    displayInfoForm(userInfo?: UserInformation) {
+        if (userInfo) {
+            this.userForm.controls.id.setValue(userInfo.id);
+            this.userForm.controls.fName.setValue(userInfo.fName);
+            this.userForm.controls.lName.setValue(userInfo.lName);
+            this.userForm.controls.email.setValue(userInfo.email);
+            this.userForm.controls.phoneNo.setValue(userInfo.phoneNo);
+            this.userForm.controls.status.setValue(userInfo.status === 'active' ? true : false);
+            this.displayFormType = 'edit';
+        } else {
+            this.displayFormType = 'save';
         }
-        this.editUserForm = true;
-        this.editedUser = clone(product);
     }
 
-    showAddProductForm() {
-        // resets form if edited product
-        if (this.userInfo.length) {
-            this.newUser = {};
-        }
-        this.userForm = true;
-        this.isNewForm = true;
-    }
-
-    saveProduct(product: UserInformation) {
-        if (this.isNewForm) {
-            // add new product
-            this._userInfoService.addUserData(product).subscribe((data: any) => {
-                this._userInfoService.getUserInfo().subscribe((userInfo) => {
-                    this.userInfo = userInfo;
-                });
-            } );
-        }
-        this.userForm = false;
-    }
-
-    updateProduct() {
-        this._userInfoService.updateUserData(this.editedUser).subscribe((data: any) => {
-            this._userInfoService.getUserInfo().subscribe((userInfo) => {
-                this.userInfo = userInfo;
-            });
-        });
-
-        this.editUserForm = false;
-        this.editedUser = {};
-    }
-
-    removeProduct(userData: UserInformation) {
-        this._userInfoService.deleteUserData(userData.id).subscribe(() => {
-            this._userInfoService.getUserInfo().subscribe((userInfo) => {
-                this.userInfo = userInfo;
-            });
+    saveUserInfo() {
+        const payload = this.userForm.getRawValue();
+        delete payload.id;
+        payload.status ? payload.status = 'active' : payload.status = 'inactive';
+        this._userInfoService.addUserData(payload).subscribe((data: any) => {
+            this.getUserInfo();
+            this.cancel();
         });
     }
 
-    cancelnewUser() {
-        this.newUser = {};
-        this.userForm = false;
+    updateUserInfo() {
+        const payload = this.userForm.getRawValue();
+        payload.status ? payload.status = 'active' : payload.status = 'inactive';
+        this._userInfoService.updateUserData(payload).subscribe((data: any) => {
+            this.getUserInfo();
+            this.cancel();
+        });
     }
 
-    cancelEdits() {
-        this.editedUser = {};
-        this.editUserForm = false;
+    cancel() {
+        this.displayFormType = undefined;
+        this.createForm();
     }
 
+    removeUserInfo(userData: UserInformation) {
+        this._userInfoService.deleteUserData(userData.id).subscribe(() => this.getUserInfo());
+    }
 
 }

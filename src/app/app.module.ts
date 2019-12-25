@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-
-
-import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { ProductService } from './product/product.service';
-import { ProductData } from './product/product-data';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AppComponent } from './app.component';
+import { UserData } from './user-info/user-info-data';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { UserInfoService } from './user-info/user-info.service';
+
 @NgModule({
-  imports: [BrowserModule, FormsModule, InMemoryWebApiModule.forRoot(ProductData, { dataEncapsulation: false }), HttpClientModule],
-  declarations: [AppComponent, ProductComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InMemoryWebApiModule.forRoot(UserData, { dataEncapsulation: false }),
+    HttpClientModule
+  ],
+  declarations: [AppComponent, UserInfoComponent],
   bootstrap: [AppComponent],
-  providers: []
+  providers: [UserInfoService]
 })
-export class AppModule { }
+export class AppModule {}

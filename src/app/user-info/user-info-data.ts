@@ -10,17 +10,16 @@ export class UserData implements InMemoryDbService {
                 lName: 'Garg',
                 email: 'dhruv.garg05@gmail.com',
                 phoneNo: 7830735009,
-                status: 'Active',
+                status: 'active',
             }, {
                 id: 2,
                 fName: 'Saurabh',
-                lName: 'Gaumar',
-                email: 'saurabh.gaumat@gmail.com',
+                lName: 'Gaumat',
+                email: 'shgaumat@gmail.com',
                 phoneNo: 7830735009,
-                status: 'InActive',
+                status: 'inactive',
             }
         ];
-
         return { userData };
     }
 }

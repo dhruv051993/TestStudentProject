@@ -1,101 +1,106 @@
-* {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.titleContainer {
+.page-header {
     display: flex;
-    height: 32px;
-    line-height: 32px;
-    font-size: 12px;
-    font-weight: bold;
-    background: #444444;
-    color: #ffffff;
-    padding-left: 10px;
 }
 
-.idTitle {
+.page-header h2 {
     flex: 1;
-    /* background:red; */
 }
 
-.nameTitle {
-    flex: 1;
-    /* background:green; */
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.descriptionTitle {
-    flex: 1;
-    /* background:blue; */
+thead {
+    background-color: black;
+    color: white;
 }
 
-.priceTitle {
-    flex: 1;
-    /* background:orange; */
+th {
+    text-align: left;
 }
 
-.buttonTitle {
-    flex: 1;
-    /* background:lightblue; */
+th,
+td {
+    padding: 10px 5px;
 }
 
-.infoContainer {
+td {
+    border-bottom: 1px solid lightgray;
+}
+
+td:nth-last-child(2) {
+    text-transform: capitalize;
+}
+
+td:last-child {
     display: flex;
-    height: 32px;
-    line-height: 32px;
-    border-bottom: 1px solid #dddddd;
-    padding-left: 10px;
-    background: #ffffff;
+    direction: rtl;
+    align-content: flex-end;
 }
 
-.id {
-    flex: 1;
-    /* background:yellow; */
-}
-
-.name {
-    flex: 1;
-    /* background:maroon; */
-}
-
-.description {
-    flex: 1;
-    /* background:lightgreen; */
-}
-
-.price {
-    flex: 1;
-    /* background:darkcyan; */
-}
-
-.button {
-    flex: 1;
-    /* background:pink; */
-}
-
-.addBtn {
-    background: green;
+button {
+    border-radius: 5px;
     border: none;
+    color: #ffffff;
+    font-weight: bold;
+    height: 22px;
+    width: 60px;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.add-btn {
+    background: green;
     height: 32px;
     margin-top: 20px;
-    color: #ffffff;
-    font-weight: bold;
     width: 120px;
+    margin-right: 5px;
 }
 
-.editBtn {
+.user-form {
+    margin: 20px 0;
+    display: flex;
+    padding: 0 5px;
+}
+
+.user-form div {
+    flex: 1;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+.user-form div:last-child {
+    display: flex;
+    direction: rtl;
+    padding-right: 0px;
+}
+
+.user-form input[type=text] {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid gray;
+    font-size: 14px;
+}
+
+.submit-btn {
+    background: green;
+}
+
+.cancel-btn {
+    background: lightgray;
+    color: black;
+    margin-right: 10px;
+}
+
+.edit-btn {
     background: blue;
-    border: none;
-    color: #ffffff;
-    font-weight: bold;
-    height: 22px;
-    width: 60px;
+    margin-right: 10px;
 }
 
-.deleteBtn {
+.delete-btn {
     background: red;
-    border: none;
-    color: #ffffff;
-    font-weight: bold;
-    height: 22px;
-    width: 60px;
 }
