@@ -2,18 +2,20 @@
 
 <div class="titleContainer">
     <div class="idTitle">ID</div>
-    <div class="nameTitle">Name</div>
-    <div class="descriptionTitle">Description</div>
-    <div class="priceTitle">Price</div>
+    <div class="nameTitle">First Name</div>
+    <div class="descriptionTitle">Last Name</div>
+    <div class="priceTitle">Email</div>
+    <div class="priceTitle">Status</div>
     <div class="buttonTitle"></div>
 </div>
 
 
 <div class="infoContainer" *ngFor="let product of products">
     <div class="id">{{product.id}}</div>
-    <div class="name">{{product.name}}</div>
-    <div class="description">{{product.description}}</div>
-    <div class="price">{{product.price }}</div>
+    <div class="name">{{product.fName}}</div>
+    <div class="description">{{product.lName}}</div>
+    <div class="price">{{product.email }}</div>
+    <div class="price">{{product.status}}</div>
     <div class="button">
         <button class="editBtn" (click)="showEditProductForm(product)">Edit</button>
         <button class="deleteBtn" (click)="removeProduct(product)">Delete</button>
@@ -60,15 +62,23 @@
     </div>
 
     <div>
-        <input type="text" name="name" [(ngModel)]="editedProduct.name">
+        <input type="text" name="name" [(ngModel)]="editedProduct.fName">
     </div>
 
     <div>
-        <input type="text" name="descrption" [(ngModel)]="editedProduct.description">
+        <input type="text" name="descrption" [(ngModel)]="editedProduct.lName">
     </div>
 
     <div>
-        <input type="text" name="price" [(ngModel)]="editedProduct.price">
+        <input type="text" name="price" [(ngModel)]="editedProduct.email">
+    </div>
+
+    <div>
+        <input type="text" name="phoneNo" [(ngModel)]="editedProduct.phoneNo">
+    </div>
+
+    <div>
+        <input type="text" name="status" [(ngModel)]="editedProduct.status">
     </div>
 
     <button (click)="updateProduct(editedProduct)">Submit</button>
