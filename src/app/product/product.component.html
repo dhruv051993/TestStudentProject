@@ -1,20 +1,20 @@
 <h1>Product List</h1>
 
 <div class="titleContainer">
-    <div class="idTitle">ID</div>
-    <div class="nameTitle">Name</div>
-    <div class="descriptionTitle">Description</div>
-    <div class="priceTitle">Price</div>
-    <div class="buttonTitle"></div>
+    <div class="header">ID</div>
+    <div class="header">Name</div>
+    <div class="header">Description</div>
+    <div class="header">Price</div>
+    <div class="header"></div>
 </div>
 
 
 <div class="infoContainer" *ngFor="let product of products">
-    <div class="id">{{product.id}}</div>
-    <div class="name">{{product.name}}</div>
-    <div class="description">{{product.description}}</div>
-    <div class="price">{{product.price }}</div>
-    <div class="button">
+    <div class="content">{{product.id}}</div>
+    <div class="content">{{product.name}}</div>
+    <div class="content">{{product.description}}</div>
+    <div class="content">{{product.price }}</div>
+    <div class="content">
         <button class="editBtn" (click)="showEditProductForm(product)">Edit</button>
         <button class="deleteBtn" (click)="removeProduct(product)">Delete</button>
     </div>
