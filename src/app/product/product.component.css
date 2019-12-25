@@ -1,33 +1,42 @@
-.titleContainer {
+.page-header {
     display: flex;
-    height: 32px;
-    line-height: 32px;
-    font-size: 12px;
-    font-weight: bold;
-    background: #444444;
-    color: #ffffff;
-    padding-left: 10px;
 }
 
-.header {
+.page-header h2 {
     flex: 1;
 }
 
-.infoContainer {
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: black;
+    color: white;
+}
+
+th {
+    text-align: left;
+}
+
+th,
+td {
+    padding: 10px 5px;
+}
+
+td {
+    border-bottom: 1px solid lightgray;
+}
+
+td:last-child {
     display: flex;
-    height: 32px;
-    line-height: 32px;
-    border-bottom: 1px solid #dddddd;
-    padding-left: 10px;
-    background: #ffffff;
+    direction: rtl;
+    align-content: flex-end;
 }
 
-.content {
-    flex: 1;
-}
-
-.button {
-    flex: 1;
+button {
+    border-radius: 5px;
 }
 
 .addBtn {
@@ -38,6 +47,7 @@
     color: #ffffff;
     font-weight: bold;
     width: 120px;
+    margin-right: 5px;
 }
 
 .editBtn {
@@ -47,6 +57,7 @@
     font-weight: bold;
     height: 22px;
     width: 60px;
+    margin-right: 10px;
 }
 
 .deleteBtn {

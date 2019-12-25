@@ -6,14 +6,18 @@ export class ProductData implements InMemoryDbService {
         const products: Product[] = [
             {
                 id: 1,
-                name: 'Scissors',
-                description: 'coming soon',
-                price: 4.99
+                fName: 'Dhruv',
+                lName: 'Garg',
+                email: 'dhruv.garg05@gmail.com',
+                phoneNo: 7830735009,
+                status: 'Active',
             }, {
                 id: 2,
-                name: 'Steak Knives',
-                description: 'coming soon',
-                price: 10.99
+                fName: 'Saurabh',
+                lName: 'Gaumar',
+                email: 'saurabh.gaumat@gmail.com',
+                phoneNo: 7830735009,
+                status: 'InActive',
             }
         ];
 
